@@ -10,17 +10,32 @@ const Button: React.FC<buttonProps> = ({sandTimer}) => {
 
         if (status === 'Start') {
             setStatus('Stop');
-            sandTimer();
+            // sandTimer();
             ticking();
         } else {
+            ticking();
             setStatus('Start');
-            console.log('Stopped!');
+            // console.log('Stopped!');
+            // clearInterval()
         }
     }
 
     const ticking = (): void => {
-        setInterval(():void => sandTimer(), 1000)
+        let counter = setInterval(():void => sandTimer(), 1000)
+        
+        if(status === 'Start') {
+            sandTimer();
+            let start = () => counter;
+            start();
+        } else {
+            console.log(clearInterval(counter), status);
+            clearInterval(counter);
+        }
     }
+
+    // const ticking = setInterval(():void => sandTimer(), 1000)
+
+    // clearInterval(sandTimer());
 
     return(
         <button onClick={startStop} >

@@ -4,14 +4,26 @@ import { timerState, timerProps } from '../helpers/interfaces';
 class Timer extends React.Component<timerProps, timerState> {
 // class Timer extends React.Component<{}, timerState> {
     // constructor(props:any) { 
-    constructor(props:timerProps) { 
+    constructor(props:timerProps) {
         super(props)
             this.state = {
-                startTime: props.start,
+                startTime: null,
                 endTime: null,
                 poweredOn: props.power,
             }
     }
+
+    // componentDidMount() {
+    //     this.setState({
+    //         startTime: this.props.start
+    //     })
+    // }
+
+    // componentDidUpdate() {
+    //     this.setState({
+    //         startTime: this.props.start
+    //     })
+    // }
 
     // counter() {
     //     if(this.state.poweredOn !== false) {
@@ -30,12 +42,12 @@ class Timer extends React.Component<timerProps, timerState> {
     // }
 
     render(){
-        console.log(this.props)
+        // console.log(this.state.startTime)
         return(
             <>
                 <h1>{this.props.bracketTime}</h1>
                 {/* {this.propsthis.counter()} */}
-                <h4>Start: {this.state.startTime}</h4>
+                <h4>Start: {this.props.start}</h4>
                 {
                     // this.props.bracketTime !== null ? <h4>Start: {this.state.startTime.toLocaleTimeString()}</h4> : null
                     // this.counter()

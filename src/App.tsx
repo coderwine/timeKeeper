@@ -10,14 +10,17 @@ const App: React.FC = () => {
 
   const [ bracketTime, setBracketTime ] = useState<string | null>(null);
   const [ poweredOn, setPoweredOn ] = useState<boolean>(false);
-  const [ startTime, setStartTime ] = useState<Date | null>(null)
+  // const [ startTime, setStartTime ] = useState<Date | null>(null)
+  const [ startTime, setStartTime ] = useState<string | null>(null)
   
   const sandTimer = ():void => {
     let d = new Date();
-    let toString = d.toLocaleDateString()
-    setBracketTime(toString);
-    // setStartTime(d);
+    // let toString = d.toLocaleDateString()
+    // setBracketTime(toString);
+    setBracketTime(d.toLocaleDateString());
+    setStartTime(d.toLocaleTimeString());
     setPoweredOn(!poweredOn);
+    // console.log(d.toLocaleTimeString())
   }
 
   return (
@@ -26,8 +29,6 @@ const App: React.FC = () => {
         Placeholder for Navigation
       </div>
       <hr />
-        {/* <Timer counter={sandTimer} /> */}
-        {/* <h1>Date is: {bracketTime}</h1> */}
         <Timer start={startTime} bracketTime={bracketTime} power={poweredOn} />
       <hr />
       <div>
