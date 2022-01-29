@@ -2,13 +2,14 @@ export interface buttonProps {
     // image:string;
     // idName: string;
     sandTimer: () => void;
+    // sandTimer: () => string;
 }
 
 export interface timerState {
     // startTime: Date | null;
     startTime: string | null;
     endTime: Date | null;
-    poweredOn: boolean;
+    // poweredOn: boolean;
 }
 
 export interface timerProps {
@@ -16,6 +17,6 @@ export interface timerProps {
     // start: Date | null;
     start: string | null;
     bracketTime: string | null;
-    power: boolean;
+    // power: boolean;
 
 }

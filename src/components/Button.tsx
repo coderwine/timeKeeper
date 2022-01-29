@@ -3,42 +3,59 @@ import { buttonProps } from '../helpers/interfaces';
 
 const Button: React.FC<buttonProps> = ({sandTimer}) => {
 
-    const [status, setStatus] = useState<string>('Start');
+    const [status, setStatus] = useState<string>('Clock In');
+    const [btnFunc, setBtnFunc] = useState<any>(() => startTimer)
+    
+    let track:number;
+    // let track:any = setInterval(():void => {
+    //     sandTimer();
+    // }, 1000);
 
-    const startStop = (): void => {
-        // status === 'Start' ? setStatus('Stop') : setStatus('Start');
+    // const startTimer = (): void => {
+    function startTimer(): void {
 
-        if (status === 'Start') {
-            setStatus('Stop');
-            // sandTimer();
-            ticking();
-        } else {
-            ticking();
-            setStatus('Start');
-            // console.log('Stopped!');
-            // clearInterval()
-        }
+            // status === 'Clock In' ? 
+            // setStatus('Clock Out') : 
+            // setStatus('Clock In');
+        setStatus('Clock Out');
+        setBtnFunc(() => stopTimer);
+
+            // let track;
+            
+            // let track = setInterval(():void => {
+            //     sandTimer();
+                // status === 'Clock In' ? sandTimer() : clearInterval(track);
+                
+                // if(status !== 'Clock In') {
+                //     console.log(status)
+                //     clearInterval(track);
+                // }
+            // }, 1000);
+            
+            // if(status !== 'Clock In') {
+            //     console.log(status)
+            //     clearInterval(track);
+            // } else {
+                sandTimer();
+                // track = setInterval(():void => {
+                //     sandTimer();
+                // }, 1000)
+            // }
+            // track()
+
     }
 
-    const ticking = (): void => {
-        let counter = setInterval(():void => sandTimer(), 1000)
-        
-        if(status === 'Start') {
-            sandTimer();
-            let start = () => counter;
-            start();
-        } else {
-            console.log(clearInterval(counter), status);
-            clearInterval(counter);
-        }
+    const stopTimer = ():void => {
+        console.log('CLICKED!')
+        clearInterval(track)
+        setStatus('Clock In');
+        setBtnFunc(startTimer)
     }
 
-    // const ticking = setInterval(():void => sandTimer(), 1000)
-
-    // clearInterval(sandTimer());
-
+    // console.log(typeof track)
     return(
-        <button onClick={startStop} >
+        // <button onClick={startStop} >
+        <button onClick={btnFunc} >
             {status}
         </button>
     )

@@ -1,58 +1,26 @@
 import React from 'react';
 import { timerState, timerProps } from '../helpers/interfaces';
 
-class Timer extends React.Component<timerProps, timerState> {
+// class Timer extends React.Component<timerProps, timerState> {
+class Timer extends React.Component<timerProps> {
 // class Timer extends React.Component<{}, timerState> {
     // constructor(props:any) { 
-    constructor(props:timerProps) {
-        super(props)
-            this.state = {
-                startTime: null,
-                endTime: null,
-                poweredOn: props.power,
-            }
-    }
-
-    // componentDidMount() {
-    //     this.setState({
-    //         startTime: this.props.start
-    //     })
+    // constructor(props:timerProps) {
+    //     super(props)
+            // this.state = {
+            //     startTime: null,
+            //     endTime: null,
+                // poweredOn: false,
+            // }
     // }
 
-    // componentDidUpdate() {
-    //     this.setState({
-    //         startTime: this.props.start
-    //     })
-    // }
-
-    // counter() {
-    //     if(this.state.poweredOn !== false) {
-    //         this.setState({
-    //             startTime: new Date()
-    //         })
-
-    //         return(
-    //             <h4>Start: {this.state.startTime?.toLocaleTimeString}</h4>
-    //         )
-    //     } else {
-    //         return
-    //     }
-
-
-    // }
 
     render(){
-        // console.log(this.state.startTime)
+        // console.log(this.state)
         return(
             <>
                 <h1>{this.props.bracketTime}</h1>
-                {/* {this.propsthis.counter()} */}
                 <h4>Start: {this.props.start}</h4>
-                {
-                    // this.props.bracketTime !== null ? <h4>Start: {this.state.startTime.toLocaleTimeString()}</h4> : null
-                    // this.counter()
-                }
-                {/* <h4>End: {this.state.endTime?.toLocaleTimeString()}</h4> */}
             </>
         )   
     }
